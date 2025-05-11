@@ -1,0 +1,795 @@
+<html lang="pl"><head>
+    <meta charset="UTF-8">
+    <title>Wycieczka Łotwa + ew. Estonia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        button {
+            margin-right: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+</head>
+<body contenteditable="false">
+
+    <div class="accordion" id="aiAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingAI">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAI" aria-expanded="false" aria-controls="collapseAI">
+              Generator strony AI
+            </button>
+          </h2>
+          <div id="collapseAI" class="accordion-collapse collapse" aria-labelledby="headingAI" data-bs-parent="#aiAccordion">
+            <div class="accordion-body">
+              
+              <label for="data-input">Dane wejściowe (JSON lub tekst):</label>
+              <textarea id="data-input" class="form-control mb-3" placeholder="Wprowadź dane tutaj"></textarea>
+      
+              <label for="instr-input">Instrukcja:</label>
+              <textarea id="instr-input" class="form-control mb-3" placeholder="Wprowadź instrukcję tutaj"></textarea>
+      
+              <div class="mb-3">
+                  <button id="generate-btn" class="btn btn-primary">Generuj stronę</button>
+                  <button id="copy-btn" class="btn btn-secondary">Kopiuj kod strony</button>
+              </div>
+      
+              <hr>
+      
+              <ai-request id="ai"></ai-request>
+      
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script type="module" src="https://utils.1ioe.top/forms.js" blocking="render"></script>
+    <script type="module" src="https://utils.1ioe.top/interview.js" blocking="render"></script>
+
+    <script type="module">
+        const aiElement = document.getElementById('ai');
+
+        document.getElementById('generate-btn').addEventListener('click', async () => {
+            const dataText = document.getElementById('data-input').value.trim();
+            const instrText = document.getElementById('instr-input').value.trim();
+
+            let inputData = dataText;
+
+            try {
+                let response = await aiElement.generate(inputData, instrText);
+
+                // Wycinanie między '''html i '''
+                const match = response.match(/```html\s*([\s\S]*?)\s*```/);
+                if (match && match[1]) {
+                    const extractedHTML = match[1].trim();
+
+                    // Dodanie bezpośrednio do strony
+                    document.body.insertAdjacentHTML('beforeend', extractedHTML);
+                } else {
+                    console.error("Nie znaleziono sekcji HTML w odpowiedzi.");
+                    alert("Nie znaleziono sekcji HTML w odpowiedzi.");
+                }
+            } catch (error) {
+                console.error("Błąd podczas generowania:", error);
+                alert("Wystąpił błąd podczas generowania.");
+            }
+        });
+
+        document.getElementById('copy-btn').addEventListener('click', async () => {
+            try {
+                const htmlContent = document.documentElement.outerHTML;
+                await navigator.clipboard.writeText(htmlContent);
+                alert("Kod strony został skopiowany do schowka!");
+            } catch (error) {
+                console.error("Nie udało się skopiować kodu:", error);
+                alert("Wystąpił błąd podczas kopiowania.");
+            }
+        });
+        
+        
+    </script>
+    
+
+    <div class="card">
+      <div class="card-header" id="headingVideo">
+        <h2 class="mb-0">
+          <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVideo" aria-expanded="true" aria-controls="collapseVideo">
+            1. Przewodnik Wideo
+          </button>
+        </h2>
+      </div>
+
+        <div id="collapseVideo" class="collapse show" aria-labelledby="headingVideo" data-parent="#accordionLatviaEstonia">
+            <div class="card-body">
+
+            <div class="card">
+                <div class="card-header" id="headingLatvia">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLatvia" aria-expanded="false" aria-controls="collapseLatvia">
+                    a) Łotwa
+                    </button>
+                </h2>
+                </div>
+                <div id="collapseLatvia" class="collapse" aria-labelledby="headingLatvia" data-parent="#collapseVideo">
+                <div class="card-body">
+
+                    </div><div class="card-body">
+                        <h5 class="card-title">Turystyczna Jazda - odc. 136 - Łotwa, Ryga 2021</h5>
+                        <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/47pic614dBM" allowfullscreen=""></iframe>
+                        </div>
+                    </div><div class="card-body">
+                        <h5 class="card-title">Turystyczna Jazda - odc. 151 - Łotwa: Lipawa i Pavilosta</h5>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/IChE6pWUzQg" allowfullscreen=""></iframe>
+                        </div>
+                    </div><div class="card-body">
+                        <h5 class="card-title">Turystyczna Jazda - odc. 150 - Łotwa - Jurmała</h5>
+                        <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/WojP8Hx1z6E" allowfullscreen=""></iframe>
+                        </div>
+                    </div><div class="card-body">
+                        <h5 class="card-title">Turystyczna Jazda - odc. 134 - Łotwa: Zemgale</h5>
+                        <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/VBnkubqc3Lw" allowfullscreen=""></iframe>
+                        </div>
+                    </div><div class="card-body">
+                        <h5 class="card-title">Turystyczna Jazda - odc. 95 - Łotwa: Atrakcje Rygi</h5>
+                        <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/We_UgVMbigo" allowfullscreen=""></iframe>
+                        </div>
+                    </div><div class="card-body">
+                        <h5 class="card-title">Turystyczna Jazda - odc. 115 - Łotwa: północna Kurlandia</h5>
+                        <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/cZk0pIsqbrk" allowfullscreen=""></iframe>
+                        </div>
+                    </div><div class="card-body">
+                        <h5 class="card-title">Turystyczna Jazda - odc. 78 - Łotwa: Łatgalia i Kurlandia</h5>
+                        <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/nZwI8qtNjto" allowfullscreen=""></iframe>
+                        </div>
+                    </div><div class="card-body">
+                        <h5 class="card-title">Turystyczna Jazda - odc. 116 - Łotwa: zachodnia Kurlandia</h5>
+                        <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/YKRPTIYr3I8" allowfullscreen=""></iframe>
+                        </div>
+                    </div><div class="card-body">
+                        <h5 class="card-title">Turystyczna Jazda - odc. 135 - Łotwa: Park Narodowy Gauja - Cesis i Sigulda</h5>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/OqEVYmfeyY4" allowfullscreen=""></iframe>
+                        </div>
+                    </div><div class="card-body">
+                        <h5 class="card-title">Turystyczna Jazda - odc. 96 - Łotwa: Region Vidzeme</h5>
+                        <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/lhrUccyqm5c" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                    <div class="card-header" id="headingCastles">
+                        <h2 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCastles" aria-expanded="false" aria-controls="collapseCastles">
+                            a.1) Zamki na Łotwie
+                        </button>
+                        </h2>
+                    </div>
+                    <div id="collapseCastles" class="collapse" aria-labelledby="headingCastles" data-parent="#collapseLatvia">
+                        <div class="card-body">
+                            <div class="card-body">
+                                <h5 class="card-title">Turystyczna Jazda - odc. 144 - Łotwa: zamki, dwory i pałace cz. I</h5>
+                                <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/GG5RnUrgtno" allowfullscreen=""></iframe>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Turystyczna Jazda - odc. 153 - Łotwa: zamki, dwory i pałace cz. II</h5>
+                                <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/heEvNf4jziI" allowfullscreen=""></iframe>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Turystyczna Jazda - odc. 176 - Łotwa: zamki, dwory i pałace cz. III</h5>
+                                <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ToqElVb51Ac" allowfullscreen=""></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingEstonia">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEstonia" aria-expanded="false" aria-controls="collapseEstonia">
+                    b) Estonia
+                    </button>
+                </h2>
+                </div>
+                <div id="collapseEstonia" class="collapse" aria-labelledby="headingEstonia" data-parent="#collapseVideo">
+                <div class="card-body">
+                    <div class="card-body">
+                        <h5 class="card-title">Turystyczna Jazda - odc. 130 - Estonia: Tallin</h5>
+                        <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/K0a5oCQpCfg" allowfullscreen=""></iframe>
+                        </div>
+                    </div><div class="card-body">
+                        <h5 class="card-title">Turystyczna Jazda - odc. 154 - Estonia: Tallin i okolice w sezonie zimowym</h5>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/R8gjYLJDTTo" allowfullscreen=""></iframe>
+                        </div>
+                    </div><div class="card-body">
+                        <h5 class="card-title">Turystyczna Jazda - odc. 149 - Estonia: Tartu i jezioro Pejpus</h5>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/jyVqIShl0MY" allowfullscreen=""></iframe>
+                        </div>
+                    </div><div class="card-body">
+                        <h5 class="card-title">Turystyczna Jazda - odc. 148 - Estonia: Region Setomaa</h5>
+                        <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/mgQX_mZf0HE" allowfullscreen=""></iframe>
+                        </div>
+                    </div><div class="card-body">
+                        <h5 class="card-title">Turystyczna Jazda - odc. 131 - Estonia - wyspy Saaremaa i Muhu</h5>
+                        <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/sjGCF96nDx0" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="headingRail">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRail" aria-expanded="false" aria-controls="collapseRail">
+            2. Transport Kolejowy Łotwa
+          </button>
+        </h2>
+      </div>
+      <div id="collapseRail" class="collapse" aria-labelledby="headingRail" data-parent="#accordionLatviaEstonia">
+        <div class="card-body">
+
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Rozkład Jazdy Pociągów</title>
+          
+            <div class="container mt-5">
+              <h1>Trasa Kolejowa: Rīga - Sigulda</h1>
+          
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Rīga -&gt; Sigulda</h5>
+                  <p class="card-text">
+                    <strong>Cena:</strong> 2.50€
+                  </p>
+                  <p class="card-text">
+                    <strong>Godziny odjazdów:</strong> 6:30 - 22:26
+                  </p>
+                </div>
+              </div>
+
+        </div><div class="container mt-5">
+            <h1>Trasa Kolejowa: Valmiera - Rīga</h1>
+        
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Valmiera -&gt; Cēsis -&gt; Sigulda -&gt; Rīga</h5>
+                <p class="card-text">
+                  <strong>Cena:</strong> 5.30€
+                </p>
+                <p class="card-text">
+                  <strong>Godziny odjazdów:</strong> 04:49 - 14:49
+                </p>
+              </div>
+            </div></div><div class="container mt-5">
+            <h1>Trasa Kolejowa: Cēsis - Rīga</h1>
+        
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Cēsis -&gt; Sigulda -&gt; Rīga</h5>
+                <p class="card-text">
+                  <strong>Cena:</strong> 4.40€
+                </p>
+                <p class="card-text">
+                  <strong>Godziny odjazdów:</strong> 05:19 - 17:26
+                </p>
+              </div>
+            </div></div><div class="container mt-5">
+            <h1>Trasa Kolejowa: Sigulda - Rīga</h1>
+        
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Sigulda -&gt; Rīga</h5>
+                <p class="card-text">
+                  <strong>Cena:</strong> 2.50€
+                </p>
+                <p class="card-text">
+                  <strong>Godziny odjazdów:</strong> 06:00 - 21:59
+                </p>
+              </div>
+            </div></div><div class="container mt-5">
+            <h1>Trasa Kolejowa: Rīga - Valmiera</h1>
+        
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Rīga -&gt; Sigulda -&gt; Cēsis -&gt; Valmiera</h5>
+                    <p class="card-text">
+                        <strong>Cena:</strong> 5.30€
+                    </p>
+                    <p class="card-text">
+                        <strong>Godziny odjazdów:</strong> 06:30 - 21:26
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="container mt-5">
+            <h1>Trasa Kolejowa: Rīga - Cēsis</h1>
+        
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Rīga -&gt; Sigulda -&gt; Cēsis</h5>
+                <p class="card-text">
+                  <strong>Cena:</strong> 4.40€
+                </p>
+                <p class="card-text">
+                  <strong>Godziny odjazdów:</strong> 06:30 - 21:26
+                </p>
+              </div>
+            </div>
+        </div><div class="container mt-5">
+            <h1>Trasa Kolejowa: Rīga - Valmiera</h1>
+        
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Rīga -&gt; Sigulda -&gt; Cēsis -&gt; Valmiera</h5>
+                <p class="card-text">
+                  <strong>Cena:</strong> 5.30€
+                </p>
+                <p class="card-text">
+                  <strong>Godziny odjazdów:</strong> 06:30 - 19:26
+                </p>
+              </div>
+            </div>
+        </div><div class="container mt-5">
+            <h1>Trasa Kolejowa: Rīga - Daugavpils</h1>
+        
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Rīga -&gt; Daugavpils</h5>
+                <p class="card-text">
+                  <strong>Cena:</strong> 8.70€
+                </p>
+                <p class="card-text">
+                  <strong>Godziny odjazdów:</strong> 07:31 - 21:08
+                </p>
+              </div>
+            </div>
+        </div><div class="container mt-5">
+            <h1>Trasa Kolejowa: Daugavpils - Rīga</h1>
+        
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Daugavpils -&gt; Rīga</h5>
+                <p class="card-text">
+                  <strong>Cena:</strong> 8.70€
+                </p>
+                <p class="card-text">
+                  <strong>Godziny odjazdów:</strong> 03:47 - 19:48
+                </p>
+              </div>
+            </div>
+        </div><div class="container mt-5">
+          <h1>Trasa Kolejowa: Rīga - Jelgava</h1>
+        
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Rīga -&gt; Jelgava</h5>
+              <p class="card-text">
+                <strong>Cena:</strong> 2.50€
+              </p>
+              <p class="card-text">
+                <strong>Godziny odjazdów:</strong> 05:35 - 23:35
+              </p>
+            </div>
+          </div>
+        </div><div class="container mt-5">
+            <h1>Trasa Kolejowa: Jelgava - Rīga</h1>
+        
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Jelgava -&gt; Rīga</h5>
+                <p class="card-text">
+                  <strong>Cena:</strong> 2.50€
+                </p>
+                <p class="card-text">
+                  <strong>Godziny odjazdów:</strong> 04:39 - 22:38
+                </p>
+              </div>
+            </div>
+        </div><div class="container mt-5">
+            <h1>Trasa Kolejowa: Rīga - Majori</h1>
+        
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Rīga -&gt; Majori</h5>
+                <p class="card-text">
+                  <strong>Cena:</strong> 2.00€
+                </p>
+                <p class="card-text">
+                  <strong>Godziny odjazdów:</strong> 05:30 - 23:45
+                </p>
+              </div>
+            </div>
+        </div><div class="container mt-5">
+            <h1>Trasa Kolejowa: Majori - Rīga</h1>
+        
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Majori -&gt; Rīga</h5>
+                <p class="card-text">
+                  <strong>Cena:</strong> 2.00€
+                </p>
+                <p class="card-text">
+                  <strong>Godziny odjazdów:</strong> 05:28 - 22:57
+                </p>
+              </div>
+            </div>
+        </div><div class="container">
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="headingTips">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTips" aria-expanded="false" aria-controls="collapseTips">
+            3. Porady Turystyczne Łotwa + Estonia
+          </button>
+        </h2>
+      </div>
+      <div id="collapseTips" class="collapse" aria-labelledby="headingTips" data-parent="#accordionLatviaEstonia">
+        <div class="card-body">
+            <div class="container mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        Co jeść na Łotwie
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <a href="https://www.national-geographic.pl/traveler/artykul/10-rzeczy-ktorych-trzeba-sprobowac-na-lotwie" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">10 rzeczy, których trzeba spróbować na Łotwie</h5>
+                                <p class="list-group-item-text">National Geographic Traveler</p>
+                            </a>
+                            <a href="https://www.zlotaproporcja.pl/2017/07/09/kuchnia-lotewska-co-zjesc-na-lotwie/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Kuchnia łotewska - co zjeść na Łotwie? | Łotwa - Złota Proporcja</h5>
+                                <p class="list-group-item-text">Złota Proporcja</p>
+                            </a>
+                            <a href="https://www.studniamiodu.pl/2017/12/kuchnia-otewska-dla-poczatkujacych.html" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Kuchnia łotewska dla początkujących czyli 16 potraw, których warto spróbować na Łotwie</h5>
+                                <p class="list-group-item-text">Studnia Miodu</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div><div class="container mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        Zwiedzanie Rygi
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <a href="https://zyciewpodrozy.pl/zwiedzanie-rygi/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Zwiedzanie Rygi / Co zobaczyć? Gdzie nocować?</h5>
+                                <p class="list-group-item-text">Życie w Podróży</p>
+                            </a>
+                            <a href="https://receptanapodroz.com/20-rzeczy-ktore-warto-zrobic-w-rydze/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">20 rzeczy, które warto zrobić w Rydze</h5>
+                                <p class="list-group-item-text">receptanapodroz.com</p>
+                            </a>
+                            <a href="https://www.podrozepoeuropie.pl/ryga-zwiedzanie/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Atrakcje Rygi - 17 miejsc, które warto zwiedzić i zobaczyć</h5>
+                                <p class="list-group-item-text">Podróże po Europie</p>
+                            </a>
+                             <a href="https://www.travelinscy.pl/ryga-idealny-kierunek-na-weekend/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Ryga - co warto zobaczyć w stolicy Łotwy</h5>
+                                <p class="list-group-item-text">Travelińscy</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div><div class="container mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        Spływ Rzeką Gauja
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <a href="https://bajdarka.pl/splywy-kajakowe-kanoe/%C5%82otwa/gauja" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Spływ Rzeką Gauja: Opis całej trasy</h5>
+                                <p class="list-group-item-text">bajdarka.pl</p>
+                            </a>
+                            <a href="https://maps.app.goo.gl/54ukmisXYJG2pTX38" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Skały na Gauji - Google Maps</h5>
+                                <p class="list-group-item-text">Google Maps</p>
+                            </a>
+                            <a href="https://maps.app.goo.gl/sycpGhqmZ7jzLyDPA" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Skały na Gauji - Google Maps</h5>
+                                <p class="list-group-item-text">Google Maps</p>
+                            </a>
+                            <a href="http://laivuire.lv/en/boat/3/perception-vista" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Wypożyczalnia Kajaków - Sigulda</h5>
+                                <p class="list-group-item-text">laivuire.lv</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div><div class="container mt-5">
+            <div class="card">
+                <div class="card-header">
+                    Gdzie zjeść na Łotwie
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <a href="https://prom-janowiec.pl/gdzie-zjesc-w-rydze-gastronomiczny-przewodnik-po-stolicy-lotwy" class="list-group-item list-group-item-action">
+                            <h5 class="list-group-item-heading">Gdzie zjeść w Rydze</h5>
+                            <p class="list-group-item-text">prom-janowiec.pl</p>
+                        </a>
+                        <a href="https://inspiracje-podroznicze.pl/gdzie-zjesc-w-rydze/" class="list-group-item list-group-item-action">
+                            <h5 class="list-group-item-heading">Tanie jedzenie Ryga - cz.1</h5>
+                            <p class="list-group-item-text">inspiracje-podroznicze.pl</p>
+                        </a>
+                        <a href="https://hotelkur.pl/gdzie-tanio-zjesc-w-rydze-najlepsze-miejsca-na-kazda-kieszen" class="list-group-item list-group-item-action">
+                            <h5 class="list-group-item-heading">Tanie jedzenie Ryga cz.2</h5>
+                            <p class="list-group-item-text">hotelkur.pl</p>
+                        </a>
+                         <a href="https://ksiegasmaku.pl/kuchnia-lotewska-zestawienie-przepisow/" class="list-group-item list-group-item-action">
+                            <h5 class="list-group-item-heading">Przepisy kuchni łotewskiej do samodzielnego przygotowania</h5>
+                            <p class="list-group-item-text">ksiegasmaku.pl</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div><div class="container mt-5">
+            <div class="card">
+                <div class="card-header">
+                    Inne miasta na Łotwie na 1 dzień z Rygi
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <a href="https://fotopodroze.eu/lotwa-sigulda/" class="list-group-item list-group-item-action">
+                            <h5 class="list-group-item-heading">Sigulda</h5>
+                            <p class="list-group-item-text">fotopodroze.eu</p>
+                        </a>
+                        <a href="https://fotopodroze.eu/lotwa-jurmala/" class="list-group-item list-group-item-action">
+                            <h5 class="list-group-item-heading">Jurmala</h5>
+                            <p class="list-group-item-text">fotopodroze.eu</p>
+                        </a>
+                        <a href="https://fotopodroze.eu/lotwa-jelgawa/" class="list-group-item list-group-item-action">
+                            <h5 class="list-group-item-heading">Jełgava</h5>
+                            <p class="list-group-item-text">fotopodroze.eu</p>
+                        </a>
+                        <a href="https://fotopodroze.eu/lotwa-kemeri/" class="list-group-item list-group-item-action">
+                            <h5 class="list-group-item-heading">Kemeri</h5>
+                            <p class="list-group-item-text">fotopodroze.eu</p>
+                        </a>
+                        <a href="https://fotopodroze.eu/lotwa-palac-w-rundale-i-bauska/" class="list-group-item list-group-item-action">
+                            <h5 class="list-group-item-heading">Rundale i Bauska</h5>
+                            <p class="list-group-item-text">fotopodroze.eu</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div><div class="container mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        Ryga co zobaczyć
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <a href="https://fotopodroze.eu/lotwa-ryga/stare-miasto/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Stare Miasto</h5>
+                                <p class="list-group-item-text">fotopodroze.eu</p>
+                            </a>
+                            <a href="https://fotopodroze.eu/lotwa-ryga/centrum-rygi/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Centrum Rygi</h5>
+                                <p class="list-group-item-text">fotopodroze.eu</p>
+                            </a>
+                            <a href="https://fotopodroze.eu/lotwa-ryga/secesja-w-rydze/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Dzielnica Secesyjna</h5>
+                                <p class="list-group-item-text">fotopodroze.eu</p>
+                            </a>
+                            <a href="https://fotopodroze.eu/lotwa-ryga/moskiewskie-przedmiescie-ryga/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Przedmieście moskiweskie</h5>
+                                <p class="list-group-item-text">fotopodroze.eu</p>
+                            </a>
+                            <a href="https://fotopodroze.eu/lotwa-ryga/zachodnia-ryga-i-rzeka-dzwina/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Ryga zachodnia</h5>
+                                <p class="list-group-item-text">fotopodroze.eu</p>
+                            </a>
+                            <a href="https://fotopodroze.eu/lotwa-ryga/lotewskie-muzeum-etnograficzne//" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Muzeum Etnograficzne</h5>
+                                <p class="list-group-item-text">fotopodroze.eu</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div><div class="container mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        Estonia - wypad z Rygi na 1-2 dni
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <a href="https://fotopodroze.eu/estonia-tartu/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Tartu</h5>
+                                <p class="list-group-item-text">fotopodroze.eu</p>
+                            </a>
+                            <a href="https://fotopodroze.eu/estonia-parnawa/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Parnava</h5>
+                                <p class="list-group-item-text">fotopodroze.eu</p>
+                            </a>
+                            <a href="https://fotopodroze.eu/estonia-tallin/stare-miasto-gorne/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Tallin - Stare Miasto Górne</h5>
+                                <p class="list-group-item-text">fotopodroze.eu</p>
+                            </a>
+                             <a href="https://fotopodroze.eu/estonia-tallin/stare-miasto-dolne-miasto/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Tallin - Stare Miasto Dolne Miasto</h5>
+                                <p class="list-group-item-text">fotopodroze.eu</p>
+                            </a>
+                             <a href="https://fotopodroze.eu/estonia-tallin/kadriorg/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Tallin - Kadriorg</h5>
+                                <p class="list-group-item-text">fotopodroze.eu</p>
+                            </a>
+                             <a href="https://fotopodroze.eu/estonia-tallin/dzielnica-kalamaja/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Tallin - Dzielnica Kalamaja</h5>
+                                <p class="list-group-item-text">fotopodroze.eu</p>
+                            </a>
+                             <a href="https://fotopodroze.eu/estonia-tallin/dzielnica-sadama/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Tallin - Dzielnica Sadama</h5>
+                                <p class="list-group-item-text">fotopodroze.eu</p>
+                            </a>
+                             <a href="https://fotopodroze.eu/estonia-tallin/dzielnica-pirita/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Tallin - Dzielnica Pirita</h5>
+                                <p class="list-group-item-text">fotopodroze.eu</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div><div class="container mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        Co jeść w Estonii
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <a href="https://naatlantyde.pl/gdzie-zjesc-w-tallinnie/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Tallin</h5>
+                                <p class="list-group-item-text">naatlantyde.pl</p>
+                            </a>
+                            <a href="https://wroclawturysta.pl/co-zjesc-w-estonii-przewodnik-po-estonskich-specjalach/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Emblematyczne potrawy w Estonii</h5>
+                                <p class="list-group-item-text">wroclawturysta.pl</p>
+                            </a>
+                            <a href="https://www.reddit.com/r/Eesti/comments/13ar97t/where_can_i_eat_good_and_not_expensive_in_tallinn/?tl=pl&amp;rdt=39803" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Tallin tanio na mieście - stosunkowo</h5>
+                                <p class="list-group-item-text">reddit.com</p>
+                            </a>
+                                                <a href="https://mcooker-plm.tomathouse.com/index.php@option=com_smf&amp;topic=360539.0.html" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Estońskie przepisy</h5>
+                                <p class="list-group-item-text">mcooker-plm.tomathouse.com</p>
+                            </a>
+                                                <a href="https://www.serykorycinskie.com.pl/kuchnia-estonska-przepisy-na-zupy-i-dania-z-grzybami/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">estonia - dania z zupami i grzybami</h5>
+                                <p class="list-group-item-text">serykorycinskie.com.pl</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div><div class="container mt-5">
+            <div class="card">
+                <div class="card-header">
+                    Pogoda długoterminowa - historyczna
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <a href="https://www.worldweatheronline.com/daugavpils-weather-history/daugavpils/lv.aspx" class="list-group-item list-group-item-action">
+                            <h5 class="list-group-item-heading">Dyneburg</h5>
+                            <p class="list-group-item-text">World Weather Online</p>
+                        </a>
+                        <a href="https://www.worldweatheronline.com/riga-weather-history/riga/lv.aspx" class="list-group-item list-group-item-action">
+                            <h5 class="list-group-item-heading">Ryga</h5>
+                            <p class="list-group-item-text">World Weather Online</p>
+                        </a>
+                        <a href="https://www.worldweatheronline.com/tartu-weather-history/tartumaa/ee.aspx" class="list-group-item list-group-item-action">
+                            <h5 class="list-group-item-heading">Tartu</h5>
+                            <p class="list-group-item-text">World Weather Online</p>
+                        </a>
+                        <a href="https://www.worldweatheronline.com/tallinn-weather-history/harjumaa/ee.aspx" class="list-group-item list-group-item-action">
+                            <h5 class="list-group-item-heading">Tallin</h5>
+                            <p class="list-group-item-text">World Weather Online</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div><div class="container mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        Ryga transport publiczny
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <a href="https://www.cestee.pl/cele-podrozy/lotwa/ryga/transport" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Ryga transport publiczny</h5>
+                                <p class="list-group-item-text">Cestee</p>
+                            </a>
+                            <a href="https://www.rigassatiksme.lv/en/for-riga-guests/public-transport-in-riga/" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Riga transport publiczny (EN)</h5>
+                                <p class="list-group-item-text">rigassatiksme.lv</p>
+                            </a>
+                            <a href="https://breakplan.pl/cel-podrozy/kraj/lotwa/transport?r" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">łotwa porady dla transportu publicznego</h5>
+                                <p class="list-group-item-text">Breakplan</p>
+                            </a>
+                              <a href="https://www.eesti.pl/komunikacja-w-estonii-jak-przemieszczac-sie-po-kraju-16833.html" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">estonia porady dla transportu publicznego</h5>
+                                <p class="list-group-item-text">eesti.pl</p>
+                            </a>
+                             <a href="https://www.visittallinn.ee/eng/visitor/plan/transport/public-transport" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Tallin transport publiczny</h5>
+                                <p class="list-group-item-text">visittallinn.ee</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div><div class="container mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        Informacje dla podróżujących
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <a href="https://www.gov.pl/web/estonia/informacje-dla-podrozujacych" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Estonia - Informacje dla podróżujących</h5>
+                                <p class="list-group-item-text">gov.pl</p>
+                            </a>
+                            <a href="https://www.gov.pl/web/lotwa/informacje-dla-podrozujacych" class="list-group-item list-group-item-action">
+                                <h5 class="list-group-item-heading">Łotwa - Informacje dla podróżujących</h5>
+                                <p class="list-group-item-text">gov.pl</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div><div class="container">
+          <div class="accordion" id="accordionLatviaEstonia">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>
