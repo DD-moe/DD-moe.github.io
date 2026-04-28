@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi, I'm Damian Bezara | Erasmus+ Profile</title>
+    <style>
+        :root {
+            --primary: #2d5a27; /* Przyjazna zieleń - kojarzy się z ekologią i Erasmusem */
+            --bg: #f9fbf9;
+            --text: #333;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        h1 { color: var(--primary); margin-bottom: 10px; }
+        .subtitle { font-size: 1.2rem; color: #666; }
+
+        .intro {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary);
+        }
+
+        /* Styl kafelków */
+        details {
+            background: var(--card-bg);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        details:hover {
+            transform: translateY(-2px);
+        }
+
+        summary {
+            padding: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::after {
+            content: "+";
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        details[open] summary::after {
+            content: "−";
+        }
+
+        .content {
+            padding: 0 20px 20px 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e8f5e9;
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin: 5px 2px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        a { color: var(--primary); text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Hi, I'm [Your Name] 👋</h1>
+        <p class="subtitle">Medical Student | Tech Enthusiast | Maker</p>
+    </header>
+
+    <div class="intro">
+        <p><strong>Why I'm here:</strong> I'm a final-year medical student who believes in lifelong learning. Beyond the hospital, I’m a coder and a tinkerer. I’m joining Erasmus+ to step out of the lab, exchange perspectives with people from different cultures, and contribute my diverse skills to the group.</p>
+    </div>
+
+    <details>
+        <summary>Medical & Scientific Background</summary>
+        <div class="content">
+            <p>I have a strong analytical background with 8 published medical research papers. For our project, this means I’m great at research, critical thinking, and presenting complex ideas in a simple way.</p>
+            <span class="tag">Research</span> <span class="tag">Health Advocacy</span> <span class="tag">First Aid</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Tech, AI & Web Development</summary>
+        <div class="content">
+            <p>I build web apps (check my GitHub!) and experiment with AI models (Stable Diffusion, XTTS). I love solving real problems with tech – like the time I built a UV photography chamber for chemical analysis because software alone wasn't enough.</p>
+            <span class="tag">React/HTML</span> <span class="tag">AI Training</span> <span class="tag">Problem Solving</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Creative & 3D Design</summary>
+        <div class="content">
+            <p>From 360° spherical photography to 3D modeling in Blender and game dev in Unreal Engine. I can help document our project or run a workshop on digital creativity.</p>
+            <span class="tag">Blender</span> <span class="tag">3D Modeling</span> <span class="tag">Visual Arts</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>Hands-on Skills & Environment</summary>
+        <div class="content">
+            <p>I’m not afraid to get my hands dirty. I'm passionate about permaculture, renewable energy, and I enjoy manual work (DIY, repairs). If the project needs someone to build, fix, or plant something – I’m in!</p>
+            <span class="tag">Permaculture</span> <span class="tag">DIY</span> <span class="tag">Sustainability</span>
+        </div>
+    </details>
+
+    <details>
+        <summary>What I bring to the group 🤝</summary>
+        <div class="content">
+            <ul>
+                <li><strong>Energy & Work Ethic:</strong> I’m happy to help with physical tasks or organizing daily activities.</li>
+                <li><strong>Knowledge Sharing:</strong> I can lead workshops on AI, "Deep Needs Analysis", or basic health topics.</li>
+                <li><strong>Cultural Exchange:</strong> Always ready to share stories, food, and traditions from Poland.</li>
+            </ul>
+        </div>
+    </details>
+
+    <footer>
+        <p>Let's connect! 
+           <a href="YOUR_LINKEDIN_URL">LinkedIn</a> | 
+           <a href="YOUR_GITHUB_URL">GitHub</a>
+        </p>
+    </footer>
+</div>
+
+</body>
+</html>
